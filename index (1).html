@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GeoAura Spatial</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Swiper.js (Portfolio Slider) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+<style>
+  /* Base */
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif; }
+  body { scroll-behavior:smooth; color:#333; }
+  a { text-decoration:none; color:inherit; }
+
+  /* Header */
+  header {
+    background:#1a237e; color:#fff;
+    padding:20px 50px; position:fixed; width:100%; top:0; z-index:100;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  header nav a { margin-left:20px; font-weight:700; transition:0.3s; }
+  header nav a:hover { color:#ffca28; }
+
+  /* Hero */
+  .hero {
+    position:relative; height:100vh; overflow:hidden;
+    display:flex; justify-content:center; align-items:center; text-align:center; color:#fff;
+  }
+  .hero-video {
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    object-fit:cover; z-index:1;
+  }
+  .hero::before {
+    content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+    background:rgba(0,0,0,0.5); z-index:2;
+  }
+  .hero-content {
+    position:relative; z-index:3; max-width:90%; padding:20px;
+  }
+  .hero-content .video-title {
+    font-size:1.5rem; margin-bottom:0.5rem;
+    font-weight:700; letter-spacing:2px; text-transform:uppercase;
+    color:#ffca28;
+  }
+  .hero-content h1 { font-size:3rem; margin-bottom:20px; }
+  .hero-content p { font-size:1.2rem; margin-bottom:30px; }
+  .hero-content a.btn {
+    padding:15px 30px; background:#ffca28; color:#1a237e;
+    font-weight:700; border-radius:5px; transition:0.3s; display:inline-block;
+  }
+  .hero-content a.btn:hover { background:#ffc107; }
+
+  /* Sections */
+  section { padding:100px 50px; }
+  .about, .services, .contact { background:#f5f5f5; }
+  .section-title { text-align:center; margin-bottom:50px; font-size:2rem; color:#1a237e; }
+
+  /* Services */
+  .services-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+  }
+  .service-card {
+    background:#fff; padding:25px;
+    border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  /* Toggle Heading */
+  .toggle-heading {
+    cursor:pointer; display:flex; align-items:center;
+    font-size:1.3rem; font-weight:700; color:#1a237e;
+    gap:10px; margin-bottom:10px;
+  }
+  .toggle-heading img { width:32px; height:32px; }
+
+  .toggle-content { display:none; margin-top:8px; font-size:1rem; line-height:1.6; }
+
+  /* Portfolio Slider */
+  .swiper { width:100%; padding:50px 0; }
+  .swiper-slide img { width:100%; border-radius:10px; }
+
+  /* Contact */
+  .contact form {
+    max-width:600px; margin:0 auto; display:flex; flex-direction:column; gap:20px;
+  }
+  .contact input, .contact textarea {
+    padding:15px; border:1px solid #ccc; border-radius:5px; font-size:1rem;
+  }
+  .contact button {
+    padding:15px; background:#1a237e; color:#fff;
+    font-weight:700; border:none; border-radius:5px; cursor:pointer;
+  }
+  .contact button:hover { background:#3949ab; }
+
+  footer {
+    background:#1a237e; color:#fff; text-align:center; padding:20px;
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo"><h2>GeoAura Spatial</h2></div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="Background_Video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="hero-content">
+    <div class="video-title">Spatial Solutions</div>
+    <h1>Welcome to GeoAura Spatial</h1>
+    <p>Transforming geographic data into actionable insights for smarter decisions.</p>
+    <a href="#contact" class="btn">Get in Touch</a>
+  </div>
+</section>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const vid = document.querySelector('.hero-video');
+    if (vid) { vid.playbackRate = 0.5; vid.loop = true; vid.play(); }
+  });
+</script>
+
+<!-- About -->
+<section id="about" class="about">
+  <h2 class="section-title">About Us</h2>
+  <p>At GeoAura Spatial Consulting, we turn complex geographic data into clear, actionable insights that drive smarter decisions. Our end-to-end geospatial services empower businesses, governments, and institutions to visualize, analyze, and understand spatial patterns that shape the world around them.</p>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services">
+  <h2 class="section-title">Our Services</h2>
+  <div class="services-grid">
+
+    <!-- GIS Services -->
+    <div class="service-card">
+      <div class="toggle-heading">
+        <i class="fa fa-map"></i> GIS Services
+      </div>
+      <div class="toggle-content">
+        Accurate and reliable GIS solutions including spatial analysis, database creation, and customized mapping for planning and decision-making.
+      </div>
+    </div>
+
+    <!-- Toposheet & Map Digitization -->
+    <div class="service-card">
+      <div class="toggle-heading">
+        <i class="fa fa-map"></i> Toposheet & Old Map Digitization
+      </div>
+      <div class="toggle-content">
+        We digitize toposheets and legacy maps into fully editable, georeferenced GIS formats with clean topology and precise attributes.
+      </div>
+    </div>
+
+    <!-- Land Use & LULC -->
+    <div class="service-card">
+      <div class="toggle-heading">
+        <i class="fa fa-tree"></i> Land Use & Land Cover Map
+      </div>
+      <div class="toggle-content">
+        High‑accuracy LULC mapping using satellite and aerial data to support urban planning, environmental studies, and resource management.
+      </div>
+    </div>
+
+    <!-- Cadastral Mapping -->
+    <div class="service-card">
+      <div class="toggle-heading">
+        <i class="fa fa-map-marked-alt"></i> Land Parcel & Cadastral Mapping
+      </div>
+      <div class="toggle-content">
+        Precise land parcel mapping for cadastral, revenue, and planning purposes, including boundary delineation and GIS-ready databases.
+      </div>
+    </div>
+
+    <!-- Drone Image Processing -->
+    <div class="service-card">
+      <div class="toggle-heading">
+        <i class="fa fa-paper-plane"></i> Drone Image Processing
+      </div>
+      <div class="toggle-content">
+        Processing high‑resolution drone imagery to generate orthomosaics, DEMs, DSMs, contours, and 3D models with survey‑grade accuracy.
+      </div>
+    </div>
+
+    <!-- AutoCAD Services -->
+    <div class="service-card">
+      <div class="toggle-heading">
+        <i class="fa fa-pencil-ruler"></i> AutoCAD Services
+      </div>
+      <div class="toggle-content">
+        Professional AutoCAD services including precise 2D drafting, detailed floor plans, elevations, sections, and high‑quality 3D modeling.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Styles -->
+<style>
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.service-card {
+  background: linear-gradient(145deg, #ffffff, #f9f9f9);
+  border-left: 5px solid #3498db;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.5s ease;
+  cursor: move;
+  position: relative;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.toggle-heading {
+  font-weight: 600;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-content {
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 0;
+  color: #555;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  transition: max-height 0.35s ease, margin-top 0.35s ease;
+}
+
+.service-card.show-content .toggle-content {
+  max-height: 500px;
+  margin-top: 12px;
+}
+
+.service-card.show-content .toggle-heading {
+  display: none;
+}
+</style>
+
+<!-- JS for toggle -->
+<script>
+const cards = document.querySelectorAll('.service-card');
+
+cards.forEach(card => {
+  const heading = card.querySelector('.toggle-heading');
+  const content = card.querySelector('.toggle-content');
+
+  // Click on heading → show content
+  heading.addEventListener('click', () => {
+    card.classList.add('show-content');
+  });
+
+  // Click on content → hide content, show heading
+  content.addEventListener('click', () => {
+    card.classList.remove('show-content');
+  });
+});
+</script>
+
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+<!-- Portfolio -->
+<section id="portfolio">
+  <h2 class="section-title">Our Portfolio</h2>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="https://via.placeholder.com/800x500" alt="Project 1"></div>
+      <div class="swiper-slide"><img src="https://via.placeholder.com/800x500" alt="Project 2"></div>
+      <div class="swiper-slide"><img src="https://via.placeholder.com/800x500" alt="Project 3"></div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="contact">
+  <h2 class="section-title">Contact Us</h2>
+  <form>
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer>&copy; 2026 GeoAura Spatial. All Rights Reserved.</footer>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<script>
+  const swiper = new Swiper('.swiper', {
+    loop:true,
+    pagination: { el: '.swiper-pagination', clickable:true },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    autoplay: { delay:3000 }
+  });
+
+  document.querySelectorAll('.toggle-heading').forEach(h => {
+    h.addEventListener('click', () => {
+      const desc = h.nextElementSibling;
+      desc.style.display = desc.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+</script>
+
+</body>
+</html>
